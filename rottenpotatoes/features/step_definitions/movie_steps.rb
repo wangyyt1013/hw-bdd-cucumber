@@ -18,7 +18,9 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  page.should have_content(e1)
+  page.should have_content(e2)
+  expect(page.text).to match(/.*#{e1}.*#{e2}.*/)
 end
 
 # Make it easier to express checking or unchecking several boxes at once
